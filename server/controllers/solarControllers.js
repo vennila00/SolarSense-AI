@@ -17,21 +17,27 @@ const calculateSolar = async (req, res) => {
     }
 
     // 1. Math calculations
-    const result = calculateSolarLogic(monthlyBill, roofArea, electricityTariff);
-    const {
-      monthlyUnits,
-      recommendedCapacity,
-      panelsRequired,
-      roofRequired,
-      installationCost,
-      subsidy,
-      finalCost,
-      monthlySavings,
-      yearlySavings,
-      paybackPeriod,
-    } = result;
+const result = calculateSolarLogic(
+  monthlyBill,
+  roofArea,
+  electricityTariff,
+  location
+);
 
-    const co2Reduction = (recommendedCapacity * 1.2).toFixed(2);
+const {
+  monthlyUnits,
+  recommendedCapacity,
+  panelsRequired,
+  roofRequired,
+  installationCost,
+  subsidy,
+  finalCost,
+  monthlySavings,
+  yearlySavings,
+  paybackPeriod,
+} = result;
+
+const co2Reduction = result.annualCO2Reduction;
 
     // 2. Fetch AI Recommendations from Gemini
     const aiAdvice = await getSolarSchemeAdvice({
