@@ -2,10 +2,10 @@
   "name": "solar-sense-server",
   "version": "1.0.0",
   "type": "module",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js"
   },
   "dependencies": {
     "@google/genai": "^0.1.1",
